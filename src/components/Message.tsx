@@ -1,8 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { DocumentData } from "firebase/firestore";
-import Image from "next/image";
-
-import { images } from "@/assets";
 
 export default function Message({ message }: { message: DocumentData }) {
   const isChatGPT = message.user.name === "MindMate";
