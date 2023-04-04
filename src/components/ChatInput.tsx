@@ -70,7 +70,7 @@ export default function ChatInput({ chatId }: { chatId: string }) {
 
   return (
     <>
-      <div className="bg-gray-700/50 text-gray-400 rounded-lg text-sm">
+      <div className="bg-gray-700/50 text-gray-400 rounded-lg text-sm w-40">
         <form onSubmit={sendMessage} className="flex p-5 space-x-5">
           <input
             className="bg-transparent focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300"
@@ -88,20 +88,6 @@ export default function ChatInput({ chatId }: { chatId: string }) {
             <PaperAirplaneIcon className="h-4 w-4 -rotate-45" />
           </button>
         </form>
-      </div>
-      <div className="flex justify-center text-gray-400 text-sm  mt-4">
-        <a
-          href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
-          target="_blank"
-          rel="noreferrer"
-          className="underline hover:text-gray-200"
-        >
-          ChatGPT Feb 13 Version
-        </a>
-        <p>
-          . Free Research Preview. Our goal is to make AI systems more natural
-          and safe to interact with. Your feedback will help us improve.
-        </p>
       </div>
     </>
   );
