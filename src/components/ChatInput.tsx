@@ -70,7 +70,7 @@ export default function ChatInput({ chatId }: { chatId: string }) {
 
   return (
     <>
-      <div className="bg-gray-700/50 text-gray-400 rounded-lg text-sm w-40">
+      <div className="bg-gray-700/50 text-gray-400 rounded-lg text-sm">
         <form onSubmit={sendMessage} className="flex p-5 space-x-5">
           <input
             className="bg-transparent focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300"
