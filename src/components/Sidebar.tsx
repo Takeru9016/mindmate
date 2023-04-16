@@ -34,53 +34,52 @@ export default function Sidebar() {
             <div className="hidden sm:inline">
               <ModelSelection />
             </div>
-            <div className="flex mt-3">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="temperature" className="text-sm text-gray-100">
-                  Temperature: {temperature}
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={temperature}
-                  onChange={(e) => setTemperature(parseFloat(e.target.value))}
-                  id="temperature"
-                  className="w-full"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="temperature" className="text-sm text-gray-100">
-                  Frequency_penalty: {frequency_penalty}
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={frequency_penalty}
-                  onChange={(e) => setFrequency_penalty(parseFloat(e.target.value))}
-                  id="frequency_penalty"
-                  className="w-full"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="temperature" className="text-sm text-gray-100">
-                  Presence_penalty: {presence_penalty}
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={presence_penalty}
-                  onChange={(e) => setPresence_penalty(parseFloat(e.target.value))}
-                  id="presence_penalty"
-                  className="w-full"
-                />
-              </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="temperature" className="text-sm text-gray-100">
+                Temperature: {temperature}
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.1"
+                value={temperature}
+                onChange={(e) => setTemperature(parseFloat(e.target.value))}
+                id="temperature"
+                className="w-full"
+              />
             </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="temperature" className="text-sm text-gray-100">
+                Frequency_penalty: {frequency_penalty}
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.1"
+                value={frequency_penalty}
+                onChange={(e) => setFrequency_penalty(parseFloat(e.target.value))}
+                id="frequency_penalty"
+                className="w-full"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="temperature" className="text-sm text-gray-100">
+                Presence_penalty: {presence_penalty}
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.1"
+                value={presence_penalty}
+                onChange={(e) => setPresence_penalty(parseFloat(e.target.value))}
+                id="presence_penalty"
+                className="w-full"
+              />
+            </div>
+
             <div className="flex-col flex-1 overflow-y-auto border-b border-white/20">
               <div className="flex flex-col gap-2 text-gray-100 text-sm">
                 {loading && (
