@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, orderBy, query } from "firebase/firestore";
@@ -13,13 +13,16 @@ import ModelSelection from "./ModelSelection";
 
 export default function Sidebar() {
   const { data: session } = useSession();
+  const [temperature, setTemperature] = useState(0.9);
+  const [frequency_penalty, setFrequency_penalty] = useState(0)
+  const [presence_penalty, setPresence_penalty] = useState(0)
 
   const [chats, loading] = useCollection(
     session &&
-      query(
-        collection(db, "users", session?.user?.email!, "chats"),
-        orderBy("createdAt", "asc")
-      )
+    query(
+      collection(db, "users", session?.user?.email!, "chats"),
+      orderBy("createdAt", "asc")
+    )
   );
 
   return (
@@ -30,6 +33,53 @@ export default function Sidebar() {
             <NewChat />
             <div className="hidden sm:inline">
               <ModelSelection />
+            </div>
+            <div className="flex mt-3">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="temperature" className="text-sm text-gray-100">
+                  Temperature: {temperature}
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={temperature}
+                  onChange={(e) => setTemperature(parseFloat(e.target.value))}
+                  id="temperature"
+                  className="w-full"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="temperature" className="text-sm text-gray-100">
+                  Frequency_penalty: {frequency_penalty}
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={frequency_penalty}
+                  onChange={(e) => setFrequency_penalty(parseFloat(e.target.value))}
+                  id="frequency_penalty"
+                  className="w-full"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="temperature" className="text-sm text-gray-100">
+                  Presence_penalty: {presence_penalty}
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={presence_penalty}
+                  onChange={(e) => setPresence_penalty(parseFloat(e.target.value))}
+                  id="presence_penalty"
+                  className="w-full"
+                />
+              </div>
             </div>
             <div className="flex-col flex-1 overflow-y-auto border-b border-white/20">
               <div className="flex flex-col gap-2 text-gray-100 text-sm">
