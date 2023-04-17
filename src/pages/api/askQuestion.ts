@@ -9,7 +9,7 @@ type Data = {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { prompt, chatId, model, session, frequency_penalty, presence_penalty } = req.body
+    const { prompt, chatId, model, session} = req.body
 
     if (!prompt) {
         res.status(400).json({ answer: 'Please provide a prompt!' })
@@ -26,17 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return
     }
 
-    if (!frequency_penalty) {
-        res.status(400).json({ answer: 'Please select a frequency penalty' })
-        return
-    }
-
-    if (!presence_penalty) {
-        res.status(400).json({ answer: 'Please select a presence penalty' })
-        return
-    }
-
-    const response = await query(prompt, chatId, model, frequency_penalty, presence_penalty)
+    const response = await query(prompt, chatId, model)
 
     const message: Message = {
         text: response || "MindMate was unable to find an answer for that!",

@@ -1,14 +1,14 @@
 import openai from "./chatgpt";
 
-const query = async (prompt: string, model: string, temperature: number, frequency_penalty: number, presence_penalty: number) => {
+const query = async (prompt: string, model: string) => {
     const res = await openai.createCompletion({
         model,
         prompt,
-        temperature,
+        temperature: 0.9,
         max_tokens: 1000,
         top_p: 1,
-        frequency_penalty,
-        presence_penalty,
+        frequency_penalty: 0,
+        presence_penalty: 0,
     }).then(res => res.data.choices[0].text)
         .catch((err) => `MindMate was unable to find an answer for that! (Error: ${err.message})`);
 
